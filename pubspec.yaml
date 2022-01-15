@@ -29,6 +29,10 @@ dependencies:
   flutter:
     sdk: flutter
   fluttertoast: ^8.0.8
+  http: 0.13.0
+  image_picker: ^0.8.4+4
+  path: ^1.8.0
+  url_launcher: ^6.0.9
 
 dev_dependencies:
   flutter_test:
@@ -54,6 +58,7 @@ flutter:
      - assets/car.png
      - assets/K.jpg
      - assets/M.jpg
+     - assets/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
   # For details regarding adding assets from package dependencies, see

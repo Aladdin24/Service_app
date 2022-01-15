@@ -1,4 +1,3 @@
-import 'package:projet/screens/phone.dart';
 import 'package:projet/screens/registration_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +28,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    
+
     //email field
     final emailField = TextFormField(
         autofocus: false,
@@ -117,14 +116,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
-                         Image.asset(
-                          "assets/K.jpg",
-                          height: 300,
-                          width: 900,
-                          fit: BoxFit.cover,
-                        ),
-                        
-                          
+                    Image.asset(
+                      "assets/K.jpg",
+                      height: 300,
+                      width: 900,
+                      fit: BoxFit.cover,
+                    ),
                     SizedBox(height: 25),
                     emailField,
                     SizedBox(height: 25),
@@ -153,18 +150,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           )
                         ]),
-                    
-                      SizedBox(height: 16),
-                        MaterialButton(onPressed:()=>Navigator.of(context).push(MaterialPageRoute(builder: (context)=>PhoneScreen())),child: Text(
-            "Sign In with phone number",
-            textAlign: TextAlign.center,
-            style: TextStyle(
-                fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),
-          ), elevation: 10,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50.0))),
-              color: Colors.purple.shade900,
-              padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
-          minWidth: MediaQuery.of(context).size.width,),
+                    SizedBox(height: 16),
                   ],
                 ),
               ),

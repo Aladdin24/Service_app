@@ -4,6 +4,27 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:projet/screens/welcome.dart';
 
 class PhoneScreen extends StatefulWidget {
+  final int id_voiture;
+  final String Marque;
+  final String image;
+  final String Modele;
+  final String vitesses;
+  final String nbr_places;
+  final String Prix;
+  final String Couleur;
+  final String Disponibilite;
+
+  PhoneScreen(
+      {required this.id_voiture,
+      required this.Marque,
+      required this.image,
+      required this.Modele,
+      required this.vitesses,
+      required this.nbr_places,
+      required this.Prix,
+      required this.Couleur,
+      required this.Disponibilite});
+
   @override
   _PhoneScreenState createState() => _PhoneScreenState();
 }
@@ -29,81 +50,76 @@ class _PhoneScreenState extends State<PhoneScreen> {
             fontSize: 20,
           ),
         ),
-        backgroundColor: Colors.purple.shade700,
+        backgroundColor: Colors.purple.shade900,
       ),
       body: Center(
         child: SingleChildScrollView(
-          child:  Container(
-        margin: const EdgeInsets.only(bottom: 20.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset(
-                          "assets/M.jpg",
-                         
-                          fit: BoxFit.cover,
-                        ),
-                        
-                        
-            TextField(
-              controller: phoneController,
-              decoration: InputDecoration(
-                hintText: 'Phone Number',
-                prefix: Padding(
-                  padding: EdgeInsets.all(4),
-                  child: Text('+222'),
+          child: Container(
+            margin: const EdgeInsets.only(bottom: 20.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(
+                  "assets/M.jpg",
+                  fit: BoxFit.cover,
                 ),
-              ),
-              maxLength: 10,
-              keyboardType: TextInputType.phone,
-            ),
-            SizedBox(height: 10),
-            Visibility(
-              child: TextField(
-                controller: otpController,
-                decoration: InputDecoration(
-                  hintText: 'OTP',
-                  prefix: Padding(
-                    padding: EdgeInsets.all(4),
-                    child: Text(''),
+                TextField(
+                  controller: phoneController,
+                  decoration: InputDecoration(
+                    hintText: 'Phone Number',
+                    prefix: Padding(
+                      padding: EdgeInsets.all(4),
+                      child: Text('+222'),
+                    ),
                   ),
+                  maxLength: 10,
+                  keyboardType: TextInputType.phone,
                 ),
-                maxLength: 6,
-                keyboardType: TextInputType.number,
-              ),
-              visible: otpVisibility,
+                SizedBox(height: 10),
+                Visibility(
+                  child: TextField(
+                    controller: otpController,
+                    decoration: InputDecoration(
+                      hintText: 'OTP',
+                      prefix: Padding(
+                        padding: EdgeInsets.all(4),
+                        child: Text(''),
+                      ),
+                    ),
+                    maxLength: 6,
+                    keyboardType: TextInputType.number,
+                  ),
+                  visible: otpVisibility,
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                MaterialButton(
+                  elevation: 10,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(50.0))),
+                  color: Colors.purple.shade900,
+                  padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+                  minWidth: MediaQuery.of(context).size.width,
+                  onPressed: () {
+                    if (otpVisibility) {
+                      verifyOTP();
+                    } else {
+                      loginWithPhone();
+                    }
+                  },
+                  child: Text(otpVisibility ? "Verify" : "Login",
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      )),
+                ),
+              ],
             ),
-            SizedBox(
-              height: 10,
-            ),
-            MaterialButton(
-               elevation: 10,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50.0))),
-              color: Colors.purple.shade900,
-              padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
-          minWidth: MediaQuery.of(context).size.width,
-              onPressed: () {
-                if (otpVisibility) {
-                  verifyOTP();
-                } else {
-                  loginWithPhone();
-                }
-              },
-              child: Text(
-                otpVisibility ? "Verify" : "Login",
-                style:
-                 TextStyle(
-                fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold,)
-                
-              ),
-              
-            ),
-          ],
-        ),
-      ), 
+          ),
         ),
       ),
-     
     );
   }
 
@@ -139,7 +155,7 @@ class _PhoneScreenState extends State<PhoneScreen> {
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.CENTER,
           timeInSecForIosWeb: 1,
-          backgroundColor: Colors.red,
+          backgroundColor: Colors.purple.shade900,
           textColor: Colors.white,
           fontSize: 16.0,
         );
