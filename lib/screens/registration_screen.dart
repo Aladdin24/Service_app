@@ -32,16 +32,17 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   Widget build(BuildContext context) {
     //first name field
     final firstNameField = TextFormField(
+      cursorColor: Colors.blueAccent,
         autofocus: false,
         controller: firstNameEditingController,
         keyboardType: TextInputType.name,
         validator: (value) {
           RegExp regex = new RegExp(r'^.{3,}$');
           if (value!.isEmpty) {
-            return ("First Name cannot be Empty");
+            return ("Le prénom ne peut pas être vide");
           }
           if (!regex.hasMatch(value)) {
-            return ("Enter Valid name(Min. 3 Character)");
+            return ("Entrez un nom valide (min. 3 caractères)");
           }
           return null;
         },
@@ -50,9 +51,14 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         },
         textInputAction: TextInputAction.next,
         decoration: InputDecoration(
-          prefixIcon: Icon(Icons.account_circle),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.blueAccent.shade100, width: 2.5),
+            borderRadius: BorderRadius.circular(20),
+            
+          ),
+          prefixIcon: Icon(Icons.account_circle,color: Colors.purple.shade900,),
           contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
-          hintText: "First Name",
+          hintText: "Prénom",
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
           ),
@@ -60,12 +66,13 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
     //second name field
     final secondNameField = TextFormField(
+      cursorColor: Colors.blueAccent,
         autofocus: false,
         controller: secondNameEditingController,
         keyboardType: TextInputType.name,
         validator: (value) {
           if (value!.isEmpty) {
-            return ("Second Name cannot be Empty");
+            return ("Le deuxième nom ne peut pas être vide");
           }
           return null;
         },
@@ -74,9 +81,14 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         },
         textInputAction: TextInputAction.next,
         decoration: InputDecoration(
-          prefixIcon: Icon(Icons.account_circle),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.blueAccent.shade100, width: 2.5),
+            borderRadius: BorderRadius.circular(20),
+            
+          ),
+          prefixIcon: Icon(Icons.account_circle,color: Colors.purple.shade900,),
           contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
-          hintText: "Second Name",
+          hintText: "Nom de famille",
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
           ),
@@ -84,17 +96,18 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
     //email field
     final emailField = TextFormField(
+      cursorColor: Colors.blueAccent,
         autofocus: false,
         controller: emailEditingController,
         keyboardType: TextInputType.emailAddress,
         validator: (value) {
           if (value!.isEmpty) {
-            return ("Please Enter Your Email");
+            return ("Veuillez saisir votre e-mail");
           }
           // reg expression for email validation
           if (!RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]")
               .hasMatch(value)) {
-            return ("Please Enter a valid email");
+            return ("Veuillez entrer un email valide");
           }
           return null;
         },
@@ -103,7 +116,12 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         },
         textInputAction: TextInputAction.next,
         decoration: InputDecoration(
-          prefixIcon: Icon(Icons.mail),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.blueAccent.shade100, width: 2.5),
+            borderRadius: BorderRadius.circular(20),
+            
+          ),
+          prefixIcon: Icon(Icons.mail,color: Colors.purple.shade900,),
           contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
           hintText: "Email",
           border: OutlineInputBorder(
@@ -113,16 +131,17 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
     //password field
     final passwordField = TextFormField(
+      cursorColor: Colors.blueAccent,
         autofocus: false,
         controller: passwordEditingController,
         obscureText: true,
         validator: (value) {
           RegExp regex = new RegExp(r'^.{6,}$');
           if (value!.isEmpty) {
-            return ("Password is required for login");
+            return ("Le mot de passe est requis pour la connexion");
           }
           if (!regex.hasMatch(value)) {
-            return ("Enter Valid Password(Min. 6 Character)");
+            return ("Entrez un mot de passe valide (min. 6 caractères)");
           }
         },
         onSaved: (value) {
@@ -130,9 +149,14 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         },
         textInputAction: TextInputAction.next,
         decoration: InputDecoration(
-          prefixIcon: Icon(Icons.vpn_key),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.blueAccent.shade100, width: 2.5),
+            borderRadius: BorderRadius.circular(20),
+            
+          ),
+          prefixIcon: Icon(Icons.lock,color: Colors.purple.shade900,),
           contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
-          hintText: "Password",
+          hintText: "Mot de passe",
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
           ),
@@ -140,13 +164,14 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
     //confirm password field
     final confirmPasswordField = TextFormField(
+      cursorColor: Colors.blueAccent,
         autofocus: false,
         controller: confirmPasswordEditingController,
         obscureText: true,
         validator: (value) {
           if (confirmPasswordEditingController.text !=
               passwordEditingController.text) {
-            return "Password don't match";
+            return "Le mot de passe ne correspond pas";
           }
           return null;
         },
@@ -155,9 +180,14 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         },
         textInputAction: TextInputAction.done,
         decoration: InputDecoration(
-          prefixIcon: Icon(Icons.vpn_key),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.blueAccent.shade100, width: 2.5),
+            borderRadius: BorderRadius.circular(20),
+            
+          ),
+          prefixIcon: Icon(Icons.lock,color: Colors.purple.shade900,),
           contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
-          hintText: "Confirm Password",
+          hintText: "Confirmez le mot de passe",
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
           ),
@@ -175,7 +205,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             signUp(emailEditingController.text, passwordEditingController.text);
           },
           child: Text(
-            "SignUp",
+            "S'inscrire",
             textAlign: TextAlign.center,
             style: TextStyle(
                 fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
@@ -247,25 +277,25 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       } on FirebaseAuthException catch (error) {
         switch (error.code) {
           case "invalid-email":
-            errorMessage = "Your email address appears to be malformed.";
+            errorMessage = "Votre adresse e-mail semble être malformée.";
             break;
           case "wrong-password":
-            errorMessage = "Your password is wrong.";
+            errorMessage = "Votre mot de passe est erroné.";
             break;
           case "user-not-found":
-            errorMessage = "User with this email doesn't exist.";
+            errorMessage = "L'utilisateur avec cet email n'existe pas.";
             break;
           case "user-disabled":
-            errorMessage = "User with this email has been disabled.";
+            errorMessage = "L'utilisateur avec cet e-mail a été désactivé.";
             break;
           case "too-many-requests":
-            errorMessage = "Too many requests";
+            errorMessage = "Trop de demandes";
             break;
           case "operation-not-allowed":
-            errorMessage = "Signing in with Email and Password is not enabled.";
+            errorMessage = "La connexion avec un e-mail et un mot de passe n'est pas activée.";
             break;
           default:
-            errorMessage = "An undefined Error happened.";
+            errorMessage = "Une erreur indéfinie s'est produite.";
         }
         Fluttertoast.showToast(msg: errorMessage!);
         print(error.code);
@@ -292,7 +322,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         .collection("users")
         .doc(user.uid)
         .set(userModel.toMap());
-    Fluttertoast.showToast(msg: "Account created successfully :) ");
+    Fluttertoast.showToast(msg: "Compte créé avec succès :) ");
 
     Navigator.pushAndRemoveUntil(
         (context),

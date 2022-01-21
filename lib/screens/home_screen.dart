@@ -38,14 +38,11 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Center(child: Text('VOITURES')),
         centerTitle: true,
         actions: [
-          ActionChip(
-              label: Text("DeConecte"),
-              onPressed: () {
-                logout(context);
-              }),
           IconButton(
             icon: Icon(Icons.logout),
-            onPressed: null,
+            onPressed: (){
+              logout(context);
+            },
             color: Colors.white,
           ),
         ],

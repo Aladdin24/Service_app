@@ -31,17 +31,18 @@ class _LoginScreenState extends State<LoginScreen> {
 
     //email field
     final emailField = TextFormField(
+      cursorColor: Colors.blueAccent,
         autofocus: false,
         controller: emailController,
         keyboardType: TextInputType.emailAddress,
         validator: (value) {
           if (value!.isEmpty) {
-            return ("Please Enter Your Email");
+            return ("Veuillez saisir votre e-mail");
           }
           // reg expression for email validation
           if (!RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]")
               .hasMatch(value)) {
-            return ("Please Enter a valid email");
+            return ("Veuillez entrer un email valide");
           }
           return null;
         },
@@ -50,7 +51,12 @@ class _LoginScreenState extends State<LoginScreen> {
         },
         textInputAction: TextInputAction.next,
         decoration: InputDecoration(
-          prefixIcon: Icon(Icons.mail),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.blueAccent.shade100, width: 2.5),
+            borderRadius: BorderRadius.circular(20),
+            
+          ),
+          prefixIcon: Icon(Icons.mail,color: Colors.purple.shade900,),
           contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
           hintText: "Email",
           border: OutlineInputBorder(
@@ -60,16 +66,18 @@ class _LoginScreenState extends State<LoginScreen> {
 
     //password field
     final passwordField = TextFormField(
+      cursorColor: Colors.blueAccent,
+      
         autofocus: false,
         controller: passwordController,
         obscureText: true,
         validator: (value) {
           RegExp regex = new RegExp(r'^.{6,}$');
           if (value!.isEmpty) {
-            return ("Password is required for login");
+            return ("Le mot de passe est requis pour la connexion");
           }
           if (!regex.hasMatch(value)) {
-            return ("Enter Valid Password(Min. 6 Character)");
+            return ("Entrez un mot de passe valide (min. 6 caractères)");
           }
         },
         onSaved: (value) {
@@ -77,9 +85,14 @@ class _LoginScreenState extends State<LoginScreen> {
         },
         textInputAction: TextInputAction.done,
         decoration: InputDecoration(
-          prefixIcon: Icon(Icons.lock),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.blueAccent.shade100, width: 2.5),
+            borderRadius: BorderRadius.circular(20),
+            
+          ),
+          prefixIcon: Icon(Icons.lock,color: Colors.purple.shade900,),
           contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
-          hintText: "Password",
+          hintText: "Mot de passe",
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(20),
           ),
@@ -96,7 +109,7 @@ class _LoginScreenState extends State<LoginScreen> {
             signIn(emailController.text, passwordController.text);
           },
           child: Text(
-            "Login",
+            "Connexion",
             textAlign: TextAlign.center,
             style: TextStyle(
                 fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
@@ -117,9 +130,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     Image.asset(
-                      "assets/K.jpg",
+                      "assets/ss.jpeg",
                       height: 300,
-                      width: 900,
+                      width: 500,
                       fit: BoxFit.cover,
                     ),
                     SizedBox(height: 25),
@@ -132,7 +145,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          Text("Don't have an account? "),
+                          Text("Vous n'avez pas de compte ? "),
                           GestureDetector(
                             onTap: () {
                               Navigator.push(
@@ -142,7 +155,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                           RegistrationScreen()));
                             },
                             child: Text(
-                              "SignUp",
+                              "S'inscrire",
                               style: TextStyle(
                                   color: Colors.purple.shade900,
                                   fontWeight: FontWeight.bold,
@@ -168,33 +181,33 @@ class _LoginScreenState extends State<LoginScreen> {
         await _auth
             .signInWithEmailAndPassword(email: email, password: password)
             .then((uid) => {
-                  Fluttertoast.showToast(msg: "Login Successful"),
+                  Fluttertoast.showToast(msg: "Connexion réussie "),
                   Navigator.of(context).pushReplacement(
                       MaterialPageRoute(builder: (context) => verifyScreen())),
                 });
       } on FirebaseAuthException catch (error) {
         switch (error.code) {
           case "invalid-email":
-            errorMessage = "Your email address appears to be malformed.";
+            errorMessage = "Votre adresse e-mail semble être malformée.";
 
             break;
           case "wrong-password":
-            errorMessage = "Your password is wrong.";
+            errorMessage = "Votre mot de passe est erroné.";
             break;
           case "user-not-found":
-            errorMessage = "User with this email doesn't exist.";
+            errorMessage = "L'utilisateur avec cet email n'existe pas.";
             break;
           case "user-disabled":
-            errorMessage = "User with this email has been disabled.";
+            errorMessage = "L'utilisateur avec cet e-mail a été désactivé";
             break;
           case "too-many-requests":
-            errorMessage = "Too many requests";
+            errorMessage = "Trop de demandes";
             break;
           case "operation-not-allowed":
-            errorMessage = "Signing in with Email and Password is not enabled.";
+            errorMessage = "La connexion avec un e-mail et un mot de passe n'est pas activée.";
             break;
           default:
-            errorMessage = "An undefined Error happened.";
+            errorMessage = "Une erreur indéfinie s'est produite.";
         }
         Fluttertoast.showToast(msg: errorMessage!);
         print(error.code);

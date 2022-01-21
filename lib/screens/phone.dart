@@ -45,7 +45,7 @@ class _PhoneScreenState extends State<PhoneScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Phone Authentification",
+          "Authentification du téléphone",
           style: TextStyle(
             fontSize: 20,
           ),
@@ -64,15 +64,23 @@ class _PhoneScreenState extends State<PhoneScreen> {
                   fit: BoxFit.cover,
                 ),
                 TextField(
+                  cursorColor: Colors.blue,
+                  
                   controller: phoneController,
                   decoration: InputDecoration(
-                    hintText: 'Phone Number',
+                    focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.grey.shade100, width: 2.5),
+            borderRadius: BorderRadius.circular(20),
+            
+          ),
+                    
+                    hintText: 'Numéro de téléphone',
                     prefix: Padding(
                       padding: EdgeInsets.all(4),
                       child: Text('+222'),
                     ),
                   ),
-                  maxLength: 10,
+                  maxLength: 8,
                   keyboardType: TextInputType.phone,
                 ),
                 SizedBox(height: 10),
@@ -80,6 +88,10 @@ class _PhoneScreenState extends State<PhoneScreen> {
                   child: TextField(
                     controller: otpController,
                     decoration: InputDecoration(
+                       focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.grey.shade100, width: 2.5),
+            borderRadius: BorderRadius.circular(20),
+                       ),
                       hintText: 'OTP',
                       prefix: Padding(
                         padding: EdgeInsets.all(4),
@@ -108,7 +120,7 @@ class _PhoneScreenState extends State<PhoneScreen> {
                       loginWithPhone();
                     }
                   },
-                  child: Text(otpVisibility ? "Verify" : "Login",
+                  child: Text(otpVisibility ? "Vérifier" : "Connexion",
                       style: TextStyle(
                         fontSize: 20,
                         color: Colors.white,
@@ -128,7 +140,7 @@ class _PhoneScreenState extends State<PhoneScreen> {
       phoneNumber: "+222" + phoneController.text,
       verificationCompleted: (PhoneAuthCredential credential) async {
         await auth.signInWithCredential(credential).then((value) {
-          print("You are logged in successfully");
+          print("Vous êtes connecté avec succès");
         });
       },
       verificationFailed: (FirebaseAuthException e) {
@@ -149,9 +161,9 @@ class _PhoneScreenState extends State<PhoneScreen> {
 
     await auth.signInWithCredential(credential).then(
       (value) {
-        print("You are logged in successfully");
+        print("Vous êtes connecté avec succès");
         Fluttertoast.showToast(
-          msg: "You are logged in successfully",
+          msg: "Vous êtes connecté avec succès",
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.CENTER,
           timeInSecForIosWeb: 1,

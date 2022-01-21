@@ -9,13 +9,30 @@ class wlecome extends StatefulWidget {
 class _WelcomeState extends State<wlecome> {
   @override
   Widget build(BuildContext context) => Scaffold(
-        backgroundColor: Colors.indigo[200],
+        backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: Colors.indigo[900],
-          title: Text('Welcome'),
+          title: Text('Bienvenue'),
+          centerTitle: true,
         ),
         body: Center(
-          child: buildButton(),
+          child:Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                     Image.asset(
+                      "assets/phone-call.png",
+                      height: 550,
+                      width: 400,
+                      fit: BoxFit.cover,
+                    ),
+                     buildButton(),
+                  ],
+                  
+          ),
+          
+          
+          
         ),
       );
 
@@ -24,15 +41,15 @@ class _WelcomeState extends State<wlecome> {
     final number = '46515873';
 
     return ListTile(
-      title: Text('Numero Location'),
+      title: Text('Numero Location',style: TextStyle(fontWeight:FontWeight.bold ),),
       subtitle: Text('$number'),
       trailing: TextButton(
         style: TextButton.styleFrom(
             padding: EdgeInsets.symmetric(horizontal: 32, vertical: 12),
             shape: RoundedRectangleBorder(
-              side: BorderSide(color: Colors.blue),
+              borderRadius: BorderRadius.circular(60),
             )),
-        child: Text('Call'),
+        child: Icon(Icons.call,color: Colors.black,size: 35,),
         onPressed: () async {
           launch('tel://$number');
         },

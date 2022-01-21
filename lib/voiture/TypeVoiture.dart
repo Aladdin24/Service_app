@@ -46,7 +46,7 @@ class TypeVoiture extends StatelessWidget {
               child: Hero(
                   tag: Marque,
                   child: Image.network(
-                      "http://192.168.43.245/location/uploads/${image}"))),
+                      "http://192.168.181.11/location/uploads/${image}"))),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -81,7 +81,7 @@ class TypeVoiture extends StatelessWidget {
               )
             ],
           ),
-          SizedBox(height: 10),
+          SizedBox(height: 15),
           MaterialButton(
             onPressed: () => Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) => PhoneScreen(
@@ -105,7 +105,7 @@ class TypeVoiture extends StatelessWidget {
             ),
             elevation: 10,
             shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(50.0))),
+                borderRadius: BorderRadius.circular(60),),
             color: Colors.purple.shade900,
             padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
             minWidth: MediaQuery.of(context).size.width,
