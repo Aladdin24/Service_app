@@ -46,7 +46,7 @@ class _DemoUploadImage extends State<DemoUploadImage> {
   }
 
   Future upload() async {
-    final uri = Uri.parse("http://192.168.181.11/location/upload.php");
+    final uri = Uri.parse("http://192.168.43.245/location/upload.php");
     var request = http.MultipartRequest('POST', uri);
     request.fields['marque'] = marqueController.text;
     request.fields['Modele'] = modelController.text;

@@ -65,15 +65,13 @@ class _PhoneScreenState extends State<PhoneScreen> {
                 ),
                 TextField(
                   cursorColor: Colors.blue,
-                  
                   controller: phoneController,
                   decoration: InputDecoration(
                     focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade100, width: 2.5),
-            borderRadius: BorderRadius.circular(20),
-            
-          ),
-                    
+                      borderSide:
+                          BorderSide(color: Colors.grey.shade100, width: 2.5),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
                     hintText: 'Numéro de téléphone',
                     prefix: Padding(
                       padding: EdgeInsets.all(4),
@@ -88,10 +86,11 @@ class _PhoneScreenState extends State<PhoneScreen> {
                   child: TextField(
                     controller: otpController,
                     decoration: InputDecoration(
-                       focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade100, width: 2.5),
-            borderRadius: BorderRadius.circular(20),
-                       ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide:
+                            BorderSide(color: Colors.grey.shade100, width: 2.5),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
                       hintText: 'OTP',
                       prefix: Padding(
                         padding: EdgeInsets.all(4),

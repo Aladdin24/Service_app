@@ -18,7 +18,7 @@ class AllPersonData extends StatefulWidget {
 
 class _AllPersonDataState extends State<AllPersonData> {
   Future allPerson() async {
-    var url = "http://192.168.181.11/location/viewAll.php";
+    var url = "http://192.168.43.245/location/viewAll.php";
     var response = await http.get(Uri.parse(url));
 
     var jsonData = json.decode(response.body);
@@ -35,7 +35,8 @@ class _AllPersonDataState extends State<AllPersonData> {
           v["nbr_places"],
           v["Prix"],
           v["Couleur"],
-          v["Disponibilite"]);
+          v["Disponibilite"],
+          v["Code"]);
 
       voitures.add(voiture);
     }
@@ -50,13 +51,9 @@ class _AllPersonDataState extends State<AllPersonData> {
       body: RefreshIndicator(
         color: Colors.blue,
         onRefresh: () {
-          return
-          Navigator.pushReplacement(context,
-          PageRouteBuilder(pageBuilder: (a,b,c)=>HomeScreen()));
-
+          return Navigator.pushReplacement(context,
+              PageRouteBuilder(pageBuilder: (a, b, c) => HomeScreen()));
         },
-          
-        
         child: FutureBuilder(
           future: allPerson(),
           builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -75,7 +72,7 @@ class _AllPersonDataState extends State<AllPersonData> {
                               children: [
                                 Container(
                                   child: Image.network(
-                                      "http://192.168.181.11/location/uploads/${snapshot.data[id].image}"),
+                                      "http://192.168.43.245/location/uploads/${snapshot.data[id].image}"),
                                 ),
                               ],
                             ),
@@ -89,17 +86,19 @@ class _AllPersonDataState extends State<AllPersonData> {
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) => TypeVoiture(
-                                      id_voiture: snapshot.data[id].id_voiture,
-                                      Marque: snapshot.data[id].Marque,
-                                      image: snapshot.data[id].image,
-                                      Modele: snapshot.data[id].Modele,
-                                      vitesses: snapshot.data[id].vitesses,
-                                      nbr_places: snapshot.data[id].nbr_places,
-                                      Prix: snapshot.data[id].Prix,
-                                      Couleur: snapshot.data[id].Couleur,
-                                      Disponibilite:
-                                          snapshot.data[id].Disponibilite,
-                                    ),
+                                        id_voiture:
+                                            snapshot.data[id].id_voiture,
+                                        Marque: snapshot.data[id].Marque,
+                                        image: snapshot.data[id].image,
+                                        Modele: snapshot.data[id].Modele,
+                                        vitesses: snapshot.data[id].vitesses,
+                                        nbr_places:
+                                            snapshot.data[id].nbr_places,
+                                        Prix: snapshot.data[id].Prix,
+                                        Couleur: snapshot.data[id].Couleur,
+                                        Disponibilite:
+                                            snapshot.data[id].Disponibilite,
+                                        Code: snapshot.data[id].Code),
                                   ));
                             },
                           ),

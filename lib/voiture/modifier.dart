@@ -52,7 +52,7 @@ class _AllModifier extends State<AllModifier> {
   }
 
   Future modifier() async {
-    var uri = Uri.parse("http://192.168.181.11/location/edit.php");
+    var uri = Uri.parse("http://192.168.43.245/location/edit.php");
     var request = http.MultipartRequest('POST', uri);
     request.fields['id_voiture'] = widget.id_voiture.toString();
     request.fields['marque'] = marqueController.text;

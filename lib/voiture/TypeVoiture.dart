@@ -14,6 +14,7 @@ class TypeVoiture extends StatelessWidget {
   final String Prix;
   final String Couleur;
   final String Disponibilite;
+  final String Code;
 
   TypeVoiture(
       {required this.id_voiture,
@@ -24,7 +25,8 @@ class TypeVoiture extends StatelessWidget {
       required this.nbr_places,
       required this.Prix,
       required this.Couleur,
-      required this.Disponibilite});
+      required this.Disponibilite,
+      required this.Code});
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +48,7 @@ class TypeVoiture extends StatelessWidget {
               child: Hero(
                   tag: Marque,
                   child: Image.network(
-                      "http://192.168.181.11/location/uploads/${image}"))),
+                      "http://192.168.43.245/location/uploads/${image}"))),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -82,6 +84,17 @@ class TypeVoiture extends StatelessWidget {
             ],
           ),
           SizedBox(height: 15),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              SpecificsCard(
+                name: 'Code de Voiture',
+                price: Code,
+                name2: '',
+              ),
+            ],
+          ),
+          SizedBox(height: 15),
           MaterialButton(
             onPressed: () => Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) => PhoneScreen(
@@ -105,7 +118,8 @@ class TypeVoiture extends StatelessWidget {
             ),
             elevation: 10,
             shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(60),),
+              borderRadius: BorderRadius.circular(60),
+            ),
             color: Colors.purple.shade900,
             padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
             minWidth: MediaQuery.of(context).size.width,

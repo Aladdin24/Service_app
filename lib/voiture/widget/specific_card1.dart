@@ -12,7 +12,7 @@ class SpecificsCard1 extends StatelessWidget {
     return Container(
         padding: EdgeInsets.all(8),
         height: 80,
-        width: 100,
+        width: 120,
         decoration: BoxDecoration(
             border: Border.all(color: Colors.grey, width: 1),
             borderRadius: BorderRadius.circular(10)),

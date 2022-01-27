@@ -130,7 +130,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     Image.asset(
-                      "assets/ss.jpeg",
+                      "assets/rent23.png",
                       height: 300,
                       width: 500,
                       fit: BoxFit.cover,
